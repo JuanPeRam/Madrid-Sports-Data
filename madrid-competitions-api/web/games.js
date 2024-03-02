@@ -11,4 +11,40 @@ const gamesEndPoints = {
     "15/16": `${generalEndPoint}/Partidos_2015_2016.txt`,
     "14/15": `${generalEndPoint}/partidos_2014_2015.txt`,
 }
-module.exports = gamesEndPoints
+
+const gamesKeys = [
+    "Codigo_temporada",
+    "Codigo_competicion",
+    "Codigo_fase",
+    "Codigo_grupo",
+    "Jornada",
+    "Partido",
+    "Codigo_equipo1",
+    "Codigo_equipo2",
+    "Resultado1",
+    "Resultado2",
+    "Codigo_campo",
+    "Fecha",
+    "Hora",
+    "Programado",
+    "Estado",
+    "Nombre_temporada",
+    "Nombre_competicion",
+    "Nombre_fase",
+    "Nombre_grupo",
+    "Nombre_deporte",
+    "Nombre_categoria",
+    "Nombre_jornada",
+    "Equipo_local",
+    "Equipo_visitante",
+    "Campo",
+    "Sexo_grupo",
+    "Distrito",
+    "Observaciones",
+    "SISTEMA_COMPETICION",
+    "COORD_X_CAMPO",
+    "COORD_Y_CAMPO",
+    "Color_camiseta_1",
+    "Color_camiseta_2"
+];
+module.exports = {gamesEndPoints,gamesKeys}

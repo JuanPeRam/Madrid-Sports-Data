@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { SeasonsSelect } from './SeasonsSelect'
-import { Skeleton } from './ui/skeleton'
 import { GenericSelect } from './GenericSelect'
 
 const API_ENDPOINT = 'http://localhost:3000/ranking'
