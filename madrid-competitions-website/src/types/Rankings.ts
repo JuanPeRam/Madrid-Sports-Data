@@ -22,3 +22,7 @@ type RankingItem = {
     'Nombre-Sexo': string;
     Nombre_distrito: string;
 }
+
+export type {
+    RankingItem
+}

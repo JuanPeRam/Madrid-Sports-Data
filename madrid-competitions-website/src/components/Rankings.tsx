@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { SeasonsSelect } from './SeasonsSelect'
 import { GenericSelect } from './GenericSelect'
+import { API_ENDPOINT } from '@/constants/global'
+import { RankingItem } from '@/types/Rankings'
 
-const API_ENDPOINT = 'http://localhost:3000/ranking'
 
 export const Rankings = () => {
     const [season, setSeason] = useState('')
@@ -52,7 +53,7 @@ export const Rankings = () => {
     useEffect(()=>{
         if(season){
             setIsLoading(true)
-            const endpoint = `${API_ENDPOINT}/${season.split('/')[0]}%2F${season.split('/')[1]}`
+            const endpoint = `${API_ENDPOINT}/ranking/${season.split('/')[0]}%2F${season.split('/')[1]}`
             fetch(endpoint)
                 .then((res)=>res.json())
                 .then((data)=>setData(data))

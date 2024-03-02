@@ -18,10 +18,10 @@ export const SeasonsSelect: React.FC<SeasonsSelectProps> = ({ onSeasonChange,api
         setLoading(true)
         fetch(apiEndPoint).then((res)=>res.json()).then((data)=>{setSeasons(data)}).catch(err=>setError(err)).finally(()=>setLoading(false))
     },[])
-    //const loading = true
-    const handleSeasonChanged = (season:string)=>{
-        onSeasonChange(season)
-    }
+
+    useEffect(()=>{
+        if(seasons) onSeasonChange(seasons[0])
+    }, [seasons])
   return (
     <>
         {
@@ -30,7 +30,7 @@ export const SeasonsSelect: React.FC<SeasonsSelectProps> = ({ onSeasonChange,api
         }
         {
             !loading && seasons &&
-            <Select onValueChange={handleSeasonChanged}>
+            <Select onValueChange={onSeasonChange} defaultValue={seasons[0]}>
                 <SelectTrigger className={`${componentWidth}`}>
                     <SelectValue placeholder='Temporada'/>
                 </SelectTrigger>

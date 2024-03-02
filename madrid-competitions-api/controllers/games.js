@@ -4,7 +4,7 @@ const { fetchJsonData } = require("./global");
 async function getCurrentGames(req,res){
     const endPoint = gamesEndPoints["23/24"];
     const jsonData = await fetchJsonData(endPoint,'\r\n')
-    res.send(jsonData)
+    res.json(jsonData)
 }
 
 async function getGamesBySeason(req,res){
@@ -25,7 +25,7 @@ async function getGamesBySeason(req,res){
         headerKeys = gamesKeys
     }
     const jsonData = await fetchJsonData(endPoint,rowSplitter,headerKeys);
-    res.send(jsonData.filter((row)=>row['Codigo_temporada']!=""))
+    res.json(jsonData.filter((row)=>row['Codigo_temporada']!=""))
 }
 
 module.exports = {
