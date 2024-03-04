@@ -6,7 +6,7 @@ function App() {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className='flex flex-col items-center justify-center'>
+      <div className='flex flex-col items-center justify-center font-rubik'>
         <Home/>
       </div>
     </ThemeProvider>
