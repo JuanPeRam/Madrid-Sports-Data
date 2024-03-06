@@ -8,10 +8,11 @@ import { RankingItem } from "@/types/Rankings"
 import { useEffect, useState } from "react"
 
 export const Home = () => {
+    const seasonsApiEndpoint = `${API_ENDPOINT}/seasons`
 
     const [season, setSeason] = useState<string>('');
     const [data, setData] = useState<RankingItem[]>([]);
-    const [isLoading,setIsLoading] = useState(false);
+    const [isDataLoading,setIsDataLoading] = useState<boolean>(false);
     const [sportsArray, setSportsArray] = useState<string[]|[]>([]);
     const [filters, setFilters] = useState({
         Nombre_deporte: '',
@@ -33,13 +34,13 @@ export const Home = () => {
 
     useEffect(()=>{
         if(season){
-            setIsLoading(true)
+          setIsDataLoading(true)
             const endpoint = `${API_ENDPOINT}/ranking/${season.split('/')[0]}%2F${season.split('/')[1]}`
             fetch(endpoint)
                 .then((res)=>res.json())
                 .then((data)=>setData(data))
                 .catch((error)=>console.log(error))
-                .finally(()=>setIsLoading(false))
+                .finally(()=>setIsDataLoading(false))
         }
     },[season])
 
@@ -50,8 +51,8 @@ export const Home = () => {
   return (
     <div className='max-w-[1350px] w-full'>
         <NavBar />
-        <SeasonsSelect apiEndPoint={`${API_ENDPOINT}/seasons`} onSeasonChange={(season)=>handleSeasonChange(season)}/>
-        <Sports sports={sportsArray} onSportChanged={(sport:string)=>{handleFilterChange('Nombre_deporte',sport)}} isLoading={isLoading} sportSelected=""/>
+        <SeasonsSelect apiEndPoint={seasonsApiEndpoint} onSeasonChange={(season)=>handleSeasonChange(season)}/>
+        <Sports sports={sportsArray} onSportChanged={(sport:string)=>{handleFilterChange('Nombre_deporte',sport)}} isLoading={isDataLoading} sportSelected=""/>
         <div className="flex h-[70vh]">
             <aside>
             </aside>

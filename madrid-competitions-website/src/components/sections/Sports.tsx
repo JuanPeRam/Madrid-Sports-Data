@@ -9,11 +9,13 @@ interface SportsProps {
   sportSelected:string
 }
 
-export const Sports:React.FC<SportsProps> = ({sports, onSportChanged,isLoading,sportSelected}) => {
+const sportsShown = 8;
 
+
+export const Sports:React.FC<SportsProps> = ({sports, onSportChanged,isLoading,sportSelected}) => {
   const [selectedSport, setSelectedSport] = useState(sportSelected ?? '');
-  const shownSports = sports?.slice(0,8)
-  const hiddenSports = sports?.slice(8)
+  const shownSports = sports?.slice(0,sportsShown)
+  const hiddenSports = sports?.slice(sportsShown)
   return (
     <section className="flex gap-4 p-5 bg-border">
       {
